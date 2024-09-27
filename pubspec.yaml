@@ -1,0 +1,47 @@
+name: carousel_user_story
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons:
+  dio:
+  bloc:
+  flutter_bloc:
+  top_snackbar_flutter:
+  get_it:
+  injectable:
+  lottie:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints:
+  flutter_launcher_icons:
+  flutter_gen_runner:
+  build_runner:
+  injectable_generator:
+  bloc_test:
+  mockito:
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/fonts/
+    - assets/resources/
+
+  fonts:
+    - family: Iranian Sans
+      fonts:
+        - asset: assets/fonts/iran_sans_x.ttf
+
+flutter_gen:
+  output: lib/configs/gen
+  integrations:
+    flutter_svg: true
