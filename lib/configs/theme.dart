@@ -20,7 +20,7 @@ ThemeData myTheme(BuildContext context) {
             }),
             backgroundColor:
                 WidgetStateProperty.resolveWith((Set<WidgetState> states) {
-              return ColorPalette.primary;
+              return ColorPalette.secondary;
             }),
             shape: WidgetStateProperty.all(RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),

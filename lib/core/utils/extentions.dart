@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 extension NumberParsing on num {
@@ -21,4 +22,18 @@ extension NumberParsing on num {
         height: toDouble(),
         child: child,
       );
+}
+
+extension HttpResponseValidator on Response {
+  dynamic get validate {
+    if ((statusCode == 200 || statusCode == 400 || statusCode == 404) &&
+        data != null) {
+      return data;
+    }
+    return null;
+  }
+}
+
+extension ErrorMessage on dynamic {
+  String get getErrorMessage => 'خطا در برقراری ارتباط با سرور';
 }
