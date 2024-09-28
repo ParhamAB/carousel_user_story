@@ -20,9 +20,6 @@ ThemeData myTheme(BuildContext context) {
             }),
             backgroundColor:
                 WidgetStateProperty.resolveWith((Set<WidgetState> states) {
-              if (states.contains(WidgetState.disabled)) {
-                return ColorPalette.disableColor;
-              }
               return ColorPalette.primary;
             }),
             shape: WidgetStateProperty.all(RoundedRectangleBorder(

@@ -1,3 +1,4 @@
+import 'package:carousel_user_story/configs/theme.dart';
 import 'package:carousel_user_story/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -10,11 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Carousel Story User',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: myTheme(context),
       home: const SplashScreen(),
     );
   }

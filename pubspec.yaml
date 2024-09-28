@@ -2,7 +2,7 @@ name: carousel_user_story
 description: "A new Flutter project."
 publish_to: 'none'
 
-version: 1.0.0+1
+version: 1.0.1+1
 
 environment:
   sdk: '>=3.4.3 <4.0.0'
@@ -18,6 +18,8 @@ dependencies:
   get_it:
   injectable:
   lottie:
+  flutter_animate:
+  flutter_custom_carousel:
 
 dev_dependencies:
   flutter_test:
@@ -45,3 +47,10 @@ flutter_gen:
   output: lib/configs/gen
   integrations:
     flutter_svg: true
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/resources/logo.png"
+  remove_alpha_ios: true
+  flutter_lints: ^3.0.0
