@@ -6,7 +6,7 @@ ThemeData myTheme(BuildContext context) {
   return ThemeData(
     colorScheme: ColorScheme.fromSeed(seedColor: ColorPalette.primary),
     useMaterial3: true,
-    scaffoldBackgroundColor: ColorPalette.background,
+    scaffoldBackgroundColor: ColorPalette.gradientColorOne,
     fontFamily: FontFamily.iranianSans,
     appBarTheme: const AppBarTheme(backgroundColor: ColorPalette.background),
     elevatedButtonTheme: ElevatedButtonThemeData(

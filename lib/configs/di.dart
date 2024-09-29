@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:carousel_user_story/configs/di.config.dart';
 import 'package:carousel_user_story/core/utils/const.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
@@ -12,7 +13,7 @@ final getIt = GetIt.instance;
   asExtension: true,
 )
 Future<void> configureDependencies() async {
-  // getIt.init();
+  getIt.init();
   getIt.registerLazySingleton(() {
     return createApiClient(appBaseUrl);
   });
