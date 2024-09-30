@@ -1,5 +1,4 @@
 import 'package:carousel_user_story/configs/gen/assets.gen.dart';
-import 'package:carousel_user_story/core/utils/storage.dart';
 import 'package:carousel_user_story/features/home/presentation/blocs/home_bloc/home_bloc.dart';
 import 'package:carousel_user_story/features/home/presentation/widgets/card_widget.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -17,21 +16,20 @@ class HomeItemsScreen extends StatefulWidget {
 
 class _HomeItemsScreenState extends State<HomeItemsScreen> {
   late CustomCarouselScrollController _controller;
+  List<HomeCard> widgets = [];
   String id = "";
-  bool isFirst = true;
 
   @override
   void initState() {
     _controller = CustomCarouselScrollController();
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) async {
-        final temp = await Storage.getId();
-        setState(() {
-          id = temp ?? "";
-        });
-      },
-    );
     super.initState();
+  }
+
+  void widgetsShuffle() {
+    setState(() {
+      widgets.shuffle();
+      _controller.animateTo(0);
+    });
   }
 
   @override
@@ -39,7 +37,18 @@ class _HomeItemsScreenState extends State<HomeItemsScreen> {
     return Scaffold(
       body: BlocProvider(
         create: (context) => HomeBloc()..add(HomeItemEvent()),
-        child: BlocBuilder<HomeBloc, HomeState>(
+        child: BlocConsumer<HomeBloc, HomeState>(
+          listener: (context, state) {
+            if (state is HomeSuccess) {
+              setState(() {
+                widgets = state.items.map(
+                  (e) {
+                    return HomeCard(model: e);
+                  },
+                ).toList();
+              });
+            }
+          },
           builder: (context, state) {
             if (state is HomeSuccess) {
               return Animate(
@@ -100,22 +109,17 @@ class _HomeItemsScreenState extends State<HomeItemsScreen> {
                                 )
                                 .slideX(end: 1.5),
                           ),
-                          children: state.items.map(
-                            (e) {
-                              return HomeCard(model: e);
-                            },
-                          ).toList()
-                            ..sort(
-                              (a, b) {
-                                if (id.isNotEmpty && isFirst) {
-                                  if (a.model.id == id) return -1;
-                                  if (b.model.id == id) return 1;
-                                }
-                                return 0;
-                              },
-                            )),
+                          children: widgets),
                     ),
-                    const Padding(padding: EdgeInsets.symmetric(vertical: 100))
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 100, horizontal: 120),
+                      child: ElevatedButton(
+                          onPressed: widgetsShuffle,
+                          child: const Center(
+                            child: Text("Sort Shuffle"),
+                          )),
+                    )
                   ],
                 ),
               );
@@ -125,7 +129,9 @@ class _HomeItemsScreenState extends State<HomeItemsScreen> {
             } else if (state is HomeError) {
               return Center(child: Text(state.message));
             }
-            return const Placeholder();
+            return const Center(
+              child: Text("error"),
+            );
           },
         ),
       ),
