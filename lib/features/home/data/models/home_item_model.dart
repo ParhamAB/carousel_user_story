@@ -1,4 +1,4 @@
-class HomeItem {
+class HomeItemModel {
   String? type;
   String? title;
   String? image;
@@ -10,7 +10,7 @@ class HomeItem {
   String? url;
   String? id;
 
-  HomeItem(
+  HomeItemModel(
       {this.type,
       this.title,
       this.image,
@@ -22,7 +22,7 @@ class HomeItem {
       this.url,
       this.id});
 
-  HomeItem.fromJson(Map<String, dynamic> json) {
+  HomeItemModel.fromJson(Map<String, dynamic> json) {
     type = json['type'];
     title = json['title'];
     image = json['image'];

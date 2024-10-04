@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:carousel_user_story/configs/di.config.dart';
 import 'package:carousel_user_story/core/utils/const.dart';
 import 'package:dio/dio.dart';
@@ -26,38 +25,5 @@ Dio createApiClient(String path) {
       connectTimeout: const Duration(seconds: 60),
       sendTimeout: const Duration(seconds: 60),
       receiveTimeout: const Duration(seconds: 60)));
-  dio.interceptors.add(
-    InterceptorsWrapper(
-      onError: (e, handler) {
-        log("error: ${e.toString()}\n");
-        handler.reject(e);
-      },
-      onRequest: (request, handler) {
-        try {
-          log(
-            'Request=> ${request.baseUrl}${request.path}'
-            '\n'
-            'Body=> ${request.data}'
-            '\n'
-            'Params=> ${request.queryParameters}'
-            '\n',
-          );
-          handler.next(request);
-        } catch (e) {
-          print(e);
-        }
-      },
-      onResponse: (e, handler) async {
-        log(
-          'Response=> ${e.realUri} '
-          '\n'
-          'StatusCode=> ${e.statusCode} '
-          '\n'
-          'Data=> ${e.data}',
-        );
-      },
-    ),
-  );
-
   return dio;
 }

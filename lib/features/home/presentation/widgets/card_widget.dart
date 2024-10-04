@@ -1,5 +1,6 @@
 import 'package:carousel_user_story/configs/color_palette.dart';
 import 'package:carousel_user_story/core/utils/extentions.dart';
+import 'package:carousel_user_story/core/utils/is_test_environment.dart';
 import 'package:carousel_user_story/core/utils/my_navigator.dart';
 import 'package:carousel_user_story/core/utils/storage.dart';
 import 'package:carousel_user_story/features/home/data/models/home_item_model.dart';
@@ -7,7 +8,7 @@ import 'package:carousel_user_story/features/home/presentation/screens/item_deta
 import 'package:flutter/material.dart';
 
 class HomeCard extends StatelessWidget {
-  final HomeItem model;
+  final HomeItemModel model;
   const HomeCard({super.key, required this.model});
 
   @override
@@ -41,10 +42,12 @@ class HomeCard extends StatelessWidget {
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                       ),
-                      child: Image.network(
-                        model.image ?? "",
-                        fit: BoxFit.cover,
-                      ),
+                      child: !TestEnvironment.isTestMode()
+                          ? Image.network(
+                              model.image ?? "",
+                              fit: BoxFit.cover,
+                            )
+                          : const Placeholder(),
                     ),
                   ),
                   50.hsb(),

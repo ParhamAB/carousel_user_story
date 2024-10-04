@@ -1,13 +1,14 @@
 import 'package:carousel_user_story/configs/color_palette.dart';
 import 'package:carousel_user_story/core/utils/custom_modals.dart';
 import 'package:carousel_user_story/core/utils/extentions.dart';
+import 'package:carousel_user_story/core/utils/is_test_environment.dart';
 import 'package:carousel_user_story/features/home/data/models/home_item_model.dart';
 import 'package:carousel_user_story/features/home/presentation/widgets/key_value_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 class ItemDetailsScreen extends StatefulWidget {
-  final HomeItem model;
+  final HomeItemModel model;
   const ItemDetailsScreen({super.key, required this.model});
 
   @override
@@ -70,10 +71,12 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                                           clipBehavior: Clip.antiAlias,
                                           decoration: const BoxDecoration(
                                               shape: BoxShape.circle),
-                                          child: Image.network(
-                                            widget.model.image ?? "",
-                                            fit: BoxFit.cover,
-                                          ),
+                                          child: !TestEnvironment.isTestMode()
+                                              ? Image.network(
+                                                  widget.model.image ?? "",
+                                                  fit: BoxFit.cover,
+                                                )
+                                              : const Placeholder(),
                                         ),
                                         20.hsb(),
                                         Row(
@@ -210,7 +213,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                           child: 150.wsb(
                               child: ElevatedButton(
                                   onPressed: () {
-                                    CustomModal.showSuccess(
+                                    CustomModal.showInfo(
                                         context, "Nothing to do for now 😒");
                                   },
                                   child: Row(

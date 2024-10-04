@@ -6,19 +6,19 @@ import 'package:injectable/injectable.dart';
 import 'package:carousel_user_story/core/utils/extentions.dart';
 
 abstract class IHomeRepository {
-  Future<DataState<List<HomeItem>>> items();
+  Future<DataState<List<HomeItemModel>>> items();
 }
 
 @Injectable(as: IHomeRepository)
 class HomeRepository implements IHomeRepository {
   @override
-  Future<DataState<List<HomeItem>>> items() async {
+  Future<DataState<List<HomeItemModel>>> items() async {
     try {
       final result = await getIt<IHomeDataSource>().items();
       if (result != null) {
         return DataSuccess((result as List)
             .map(
-              (item) => HomeItem.fromJson(item),
+              (item) => HomeItemModel.fromJson(item),
             )
             .toList());
       }

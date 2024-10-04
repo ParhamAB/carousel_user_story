@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
         ],
         onComplete: (controller) {
           Future.delayed(const Duration(seconds: 3), () {
-            MyNavigator.push(context, const HomeItemsScreen());
+            MyNavigator.pushReplacement(context, const HomeItemsScreen());
           });
         },
         child: Stack(
