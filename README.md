@@ -18,8 +18,8 @@ Follow these steps to get the app running on your local machine.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/ParhamAB/carousel_user_story.git
+cd carousel_user_story
 ```
 
 ### 2. Install Dependencies
