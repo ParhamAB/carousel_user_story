@@ -1,16 +1,50 @@
-# carousel_user_story
+# Flutter App 🚀
 
-A new Flutter project.
+Welcome to the **[Carousel User Story]**! This is a [just a carousel app with animations with flutter].
 
-## Getting Started
+## 🛠️ Requirements
 
-This project is a starting point for a Flutter application.
+Before you start, make sure you have the following:
 
-A few resources to get you started if this is your first Flutter project:
+- **Flutter SDK**: [Install Flutter](https://flutter.dev/docs/get-started/install)
+- **Dart SDK**: Comes with Flutter!
+- **Xcode (macOS)**: For iOS development
+- **Android Studio**: For Android development
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🚀 Getting Started
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Follow these steps to get the app running on your local machine.
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/your-repo-name.git
+cd your-repo-name
+```
+
+### 2. Install Dependencies
+
+Run the following command to install all the required packages:
+```bash
+flutter pub get
+```
+
+### 3. Run the App
+
+To run the app on an emulator or a physical device, use:
+```bash
+flutter run
+```
+If you have multiple devices/emulators connected, specify the target device:
+```bash
+flutter run -d [device_id]
+```
+or if you are using vscode just click on F5 to select device and run the project.
+
+### 4. Build APK
+
+To generate a release build, use:
+```bash
+flutter build apk --split-per-abi
+```
+and in build folder find the apk file.
