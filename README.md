@@ -46,5 +46,6 @@ or if you are using vscode just click on F5 to select device and run the project
 To generate a release build, use:
 ```bash
 flutter build apk --split-per-abi
+flutter build apk --release --target-platform android-arm,android-arm64 --obfuscate --split-debug-info=/tmp --dart-define-from-file=config.json --flavor dev
 ```
 and in build folder find the apk file.
